@@ -1,32 +1,57 @@
 version: '3'
 
 services:
-  api:
-    image: strapi/strapi
+  nginx:
+    image: nginx:latest
+#    environment:
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf/strapi.conf:/etc/nginx/conf.d/strapi.conf
+    links:
+      - strapi_api 
+    restart: always
+  strapi_api:
+    image: carrefour/strapi:1.0.0
+    build:
+      context: ./construction/strapi
+      args:
+        - APP_NAME_PAR_DEFAUT=instance-strapi
+        - DATABASE_CLIENT_PAR_DEFAUT=mongo
+        - DATABASE_HOST_PAR_DEFAUT=initialisation_strapibdd_1
+        - DATABASE_PORT_PAR_DEFAUT=27017
+        - DATABASE_NAME_PAR_DEFAUT=strapi
+        - DATABASE_USERNAME_PAR_DEFAUT=
+        - DATABASE_PASSWORD_PAR_DEFAUT=
+        # - HOST=localhost
+        # Les variables ci-desosus sont ajotuées à des seules fin de test => à retirer pour prod.
+        # - HOST=localhost
+
     environment:
-      - APP_NAME=strapi-app
+      - APP_NAME=instance-strapi
       - DATABASE_CLIENT=mongo
-      - DATABASE_HOST=db
+      - DATABASE_HOST=initialisation_strapibdd_1
       - DATABASE_PORT=27017
       - DATABASE_NAME=strapi
       - DATABASE_USERNAME=
       - DATABASE_PASSWORD=
-      - HOST=localhost
+      # - HOST=localhost
     ports:
       - 1337:1337
     volumes:
-      - ./strapi-app:/usr/src/api/strapi-app
-      #- /usr/src/api/strapi-app/node_modules
+      - ./instance-strapi:/usr/src/api/instance-strapi
+      #- /usr/src/api/instance-strapi/node_modules
     depends_on:
-      - db
+      - strapibdd
     restart: always
 
-  db:
+  strapibdd:
     image: mongo
+#    hostname: strapibdd_1
     environment:
       - MONGO_INITDB_DATABASE=strapi
     ports:
       - 27017:27017
     volumes:
-      - ./db:/data/db
+      - ./strapibdd:/data/db
     restart: always
