@@ -16,7 +16,7 @@ services:
     build:
       context: ./construction/strapi
       args:
-        - APP_NAME_PAR_DEFAUT=instance-strapi
+        - APP_NAME_PAR_DEFAUT=jbl-strapi
         - DATABASE_CLIENT_PAR_DEFAUT=mongo
         - DATABASE_HOST_PAR_DEFAUT=initialisation_strapibdd_1
         - DATABASE_PORT_PAR_DEFAUT=27017
@@ -30,7 +30,7 @@ services:
         - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
 
     environment:
-      - APP_NAME=instance-strapi
+      - APP_NAME=jbl-strapi
       - DATABASE_CLIENT=mongo
       - DATABASE_HOST=initialisation_strapibdd_1
       - DATABASE_PORT=27017

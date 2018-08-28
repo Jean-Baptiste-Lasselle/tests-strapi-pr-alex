@@ -11,11 +11,11 @@ trap _stopStrapi SIGTERM SIGINT
 
 cd /usr/src/api
 
-APP_NAME=${APP_NAME:-strapi-app}
-DATABASE_CLIENT=${DATABASE_CLIENT:-mongo}
-DATABASE_HOST=${DATABASE_HOST:-localhost}
-DATABASE_PORT=${DATABASE_PORT:-27017}
-DATABASE_NAME=${DATABASE_NAME:-strapi}
+# APP_NAME=${APP_NAME:-strapi-app}
+# DATABASE_CLIENT=${DATABASE_CLIENT:-mongo}
+# DATABASE_HOST=${DATABASE_HOST:-localhost}
+# DATABASE_PORT=${DATABASE_PORT:-27017}
+# DATABASE_NAME=${DATABASE_NAME:-strapi}
 
 echo " ++ DEBUT TESTS KYTES ++ "
 
@@ -36,14 +36,14 @@ fi
 
 
 echo " ++ DEBUT DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
-ls -all /usr/src/api/$APP_NAME/plugins/translation
-rm -rf /usr/src/api/$APP_NAME/plugins/translation
+
+ls -all /usr/src/api/$APP_NAME/
 mkdir -p /usr/src/api/$APP_NAME/plugins/translation
-cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev /usr/src/api/$APP_NAME/plugins/translation
+cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev/* /usr/src/api/$APP_NAME/plugins/translation
 
 echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
-
-
+ls -all /usr/src/api/$APP_NAME/plugins/
+echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 cd /usr/src/api/$APP_NAME
 strapi start &
 

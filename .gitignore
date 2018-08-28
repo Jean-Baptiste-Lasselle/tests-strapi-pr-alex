@@ -1,4 +1,4 @@
-# Répertorie utilisés en lecture / écriture par docker-compsoe
+# Répertoires utilisés en lecture / écriture par docker-compose
 instance-strapi/
 strapibdd/
-construction/strapi/deploiements-tests/1-deploiement-plugin/translation
+# construction/strapi/livraisons-dev
