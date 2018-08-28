@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/example",
+      "handler": "Translation.index",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/models",
+      "handler": "Translation.createModel",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/models/:model",
+      "handler": "Translation.updateModel",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/models/reload",
+      "handler": "Translation.reloadServer",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
