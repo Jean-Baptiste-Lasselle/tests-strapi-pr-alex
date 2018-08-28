@@ -24,8 +24,10 @@ services:
         - DATABASE_USERNAME_PAR_DEFAUT=
         - DATABASE_PASSWORD_PAR_DEFAUT=
         # - HOST=localhost
-        # Les variables ci-desosus sont ajotuées à des seules fin de test => à retirer pour prod.
-        # - HOST=localhost
+        # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
+        # - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/usr/src/api/livraison-dev
+        # le répertorie dans lequel on invoque strapi new doit être vide, donc /usr/src/api
+        - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
 
     environment:
       - APP_NAME=instance-strapi
@@ -36,11 +38,14 @@ services:
       - DATABASE_USERNAME=
       - DATABASE_PASSWORD=
       # - HOST=localhost
+      # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
+      - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
+
     ports:
       - 1337:1337
-    volumes:
-      - ./instance-strapi:/usr/src/api/instance-strapi
-      #- /usr/src/api/instance-strapi/node_modules
+#    volumes:
+      # - ./instance-strapi:/usr/src/api/instance-strapi
+      # - /usr/src/api/instance-strapi/node_modules
     depends_on:
       - strapibdd
     restart: always
