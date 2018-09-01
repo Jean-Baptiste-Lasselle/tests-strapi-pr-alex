@@ -1,7 +1,14 @@
 # Bien me
 ```
-export TAG_ID=tests-ligne-prod-1.0.1
-git clone -b "$TAG_ID" --single-branch --depth 1 https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git
+# export TAG_ID=tests-ligne-prod-1.0.1
+export TAG_ID=bootstrapi.previsible
+mkdir -p bootstrapi
+cd bootstrapi
+git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
+git checkout "$TAG_ID" 
+docekr-compose down && docker system prune -f && docker-compose build && docker-compose up -d && docker logs jblsbootstrapi -f 
+echo " Et comme l'on dit en un anglais parachevé: Et voilà!"
+
 ```
 
 # [Strapi](https://bitbucket.agilefabric.fr.kytes.com/scm/dev/demandes-tests.git) re-containerized by Kytes Zeta Cloud Team !
