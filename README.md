@@ -83,7 +83,7 @@ Je n'ai aucun doute (pasz encore vérifié), qu'il soit possible de faire cette 
 * `/bootiestrapi/$APP_NAME/config/environments/staging/server.json`
 * `/bootiestrapi/$APP_NAME/config/environments/production/server.json`
 
-![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/configuration-backend-server-host.png)
+![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/conf-hote-reseau-backend-strapi.png)
 
 Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`, et l'admin panel, indique avec le petit voyant vert, quel est l'environnement actif (ci-dessous, l'env. `development`, la conf CORS est donc dans `/bootiestrapi/$APP_NAME/conf/environments/development/security.json`) : 
 
