@@ -26,7 +26,7 @@ services:
         - DATABASE_PASSWORD_PAR_DEFAUT=
         # - HOST=localhost
         # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
-        # - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/usr/src/api/livraison-dev
+        - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/bootiestrapi/livraison-dev
         # le répertorie dans lequel on invoque strapi new doit être vide, donc /usr/src/api
         - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
 
@@ -40,7 +40,7 @@ services:
       - DATABASE_PASSWORD=
       # - HOST=localhost
       # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
-      - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
+      - REPERTOIRE_LIVRAISON_DEV=/bootiestrapi/livraison-dev
 
     ports:
       - 1337:1337
