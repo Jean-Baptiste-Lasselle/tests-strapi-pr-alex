@@ -38,7 +38,8 @@ ARG REPERTOIRE_LIVRAISON_DEV
 ENV REPERTOIRE_LIVRAISON_DEV=$REPERTOIRE_LIVRAISON_DEV
 
 
-
+RUN mkdir -p /bootiestrapi
+WORKDIR /bootiestrapi
 # -------------------------------------
 # - ajout d'utilitaires pour tests: 
 # -------------------------------------
@@ -67,7 +68,7 @@ EXPOSE 1337
 
 COPY healthcheck.js ./
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s \
-      CMD node /usr/src/api/healthcheck.js
+      CMD node /bootiestrapi/healthcheck.js
 
 # Ensuite, j'ai (Jean-Baptiste Lasselle) ajouté dans ./strapi.sh, les sorties standard qui apparaîtront dans
 # le [docker logs $NOM_DE_CE_CONTENEUR] pour que les erreurs de strapi pour la connexion BDD
