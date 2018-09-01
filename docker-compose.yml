@@ -12,13 +12,14 @@ services:
       - strapi_api 
     restart: always
   strapi_api:
+    container_name: jblsbootstrapi
     image: carrefour/strapi:1.0.0
     build:
       context: ./construction/strapi
       args:
         - APP_NAME_PAR_DEFAUT=jbl-strapi
         - DATABASE_CLIENT_PAR_DEFAUT=mongo
-        - DATABASE_HOST_PAR_DEFAUT=initialisation_strapibdd_1
+        - DATABASE_HOST_PAR_DEFAUT=strapibdd
         - DATABASE_PORT_PAR_DEFAUT=27017
         - DATABASE_NAME_PAR_DEFAUT=strapi
         - DATABASE_USERNAME_PAR_DEFAUT=
@@ -32,7 +33,7 @@ services:
     environment:
       - APP_NAME=jbl-strapi
       - DATABASE_CLIENT=mongo
-      - DATABASE_HOST=initialisation_strapibdd_1
+      - DATABASE_HOST=trapibdd
       - DATABASE_PORT=27017
       - DATABASE_NAME=strapi
       - DATABASE_USERNAME=
@@ -51,6 +52,7 @@ services:
     restart: always
 
   strapibdd:
+    container_name: strapibdd
     image: mongo
 #    hostname: strapibdd_1
     environment:
