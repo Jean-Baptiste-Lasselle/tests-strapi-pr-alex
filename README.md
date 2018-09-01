@@ -11,7 +11,7 @@ Resutlat :
 * Côté fonctionnel, grosse faille de sécurité admin à la gestion des utilisateurs + impossibilité de changer le mot de passe d'un utilisateur :
 
 
-[Faille sécu strapi mdp hash](https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/raw/master/doc/impr/faille-strapi-secu-mdp-hash.png.png)
+[Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
 
 
 # Objet
