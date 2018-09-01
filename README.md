@@ -77,7 +77,7 @@ Je paramètrerai ainsi, dans les prochaines release :
 npm install -g strapi@$NUMERO_VERSION_STRAPI
 ```
 
-## COnfiguration Post provision
+## Configuration Post provision
 
 Pour terminer, j'ai trouvé une configuration qui règle certains problèmes de requêtage. DAns l'impression écran ci-dessous, on voir comment j'ai configuré ce paramètre, que je pense correspondre à l'hôte réseau du serveur backend strapi, à l'aide de l'interface graphique de l' "Admin Panel" Strapi.
 
