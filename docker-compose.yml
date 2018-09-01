@@ -33,7 +33,7 @@ services:
     environment:
       - APP_NAME=jbl-strapi
       - DATABASE_CLIENT=mongo
-      - DATABASE_HOST=trapibdd
+      - DATABASE_HOST=strapibdd
       - DATABASE_PORT=27017
       - DATABASE_NAME=strapi
       - DATABASE_USERNAME=
