@@ -13,7 +13,54 @@ Resutlat :
 
 ![Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
 
+* Enfin, côté logs, on s'aperçoit qu'il y a manifestement un problème avec le petit plugin exemple `translation`, que j'ai déployé : 
 
+```bash
+[2018-08-17T10:44:02.854Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T10:44:02.856Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+(node:1180) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:1180) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(node:1180) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+(node:1180) DeprecationWarning: collection.remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead.
+[2018-08-17T10:44:03.227Z] info Time: Fri Aug 17 2018 10:44:03 GMT+0000 (UTC)
+[2018-08-17T10:44:03.227Z] info Launched in: 3486 ms
+[2018-08-17T10:44:03.227Z] info Environment: development
+[2018-08-17T10:44:03.227Z] info Process PID: 1180
+[2018-08-17T10:44:03.227Z] info Version: 3.0.0-alpha.13.1 (node v9.11.1)
+[2018-08-17T10:44:03.227Z] info To shut down your server, press <CTRL> + C at any time
+
+[2018-08-17T10:44:03.227Z] info ☄️  Admin panel: http://localhost:1337/admin
+[2018-08-17T10:44:03.228Z] info ⚡️ Server: http://localhost:1337
+
+[2018-08-17T10:44:04.474Z] info File changed: /bootiestrapi/jbl-strapi/plugins/users-permissions/config/actions.json
+[2018-08-17T10:44:06.949Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (46 ms)
+[2018-08-17T10:44:06.963Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (35 ms)
+[2018-08-17T10:44:06.966Z] debug GET /content-manager/models (31 ms)
+Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`.
+
+  Error: Cannot wrap non-Error object
+      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
+      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
+      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
+      at <anonymous>
+
+[2018-08-17T10:44:12.919Z] debug GET /users-permissions/roles (10 ms)
+Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/Langues.js`.
+
+  Error: Cannot wrap non-Error object
+      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
+      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
+      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
+      at <anonymous>
+
+[2018-08-17T10:44:17.345Z] debug GET /settings-manager/configurations/environments (6 ms)
+[2018-08-17T10:44:17.347Z] debug GET /settings-manager/menu (10 ms)
+[2018-08-17T10:44:17.533Z] debug GET /settings-manager/configurations/application (6 ms)
+[2018-08-17T10:44:28.142Z] debug GET /settings-manager/configurations/server/development (6 ms)
+[2018-08-17T10:44:31.267Z] debug GET /settings-manager/configurations/server/production (5 ms)
+[2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
+[2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
+```
 # Objet
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
