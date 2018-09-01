@@ -85,6 +85,9 @@ Je n'ai aucun doute (pasz encore vérifié), qu'il soit possible de faire cette 
 
 ![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/configuration-backend-server-host.png)
 
+Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`, et l'admin panel, indique avec le petit voyant vert, quel est l'environnement actif (ci-dessous, l'env. `development`, la conf CORS est donc dans `/bootiestrapi/$APP_NAME/conf/environments/development/security.json`) : 
+
+![Admin Panel: configuration CORS strapi front END ou bacend Valeur de l'Origin](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/et-aller-pour-la-conf-cors-security.json.png)
 
 
 # [Strapi](https://bitbucket.agilefabric.fr.kytes.com/scm/dev/demandes-tests.git) re-containerized by Kytes Zeta Cloud Team !
