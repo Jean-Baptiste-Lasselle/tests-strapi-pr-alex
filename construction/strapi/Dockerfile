@@ -63,6 +63,7 @@ RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV
 WORKDIR $REPERTOIRE_LIVRAISON_DEV
 ADD ./livraisons-dev/1/translation .
 
+WORKDIR /bootiestrapi
 
 RUN npm install -g strapi@3.0.0-alpha.13.1
 
