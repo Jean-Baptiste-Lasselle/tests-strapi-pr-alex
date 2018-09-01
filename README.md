@@ -2,7 +2,7 @@
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
 Par exemple, dans la release `bootstrapi.previsible`, je montre que la partie authentification de l'applciation pose un problème manifieste;
-L'intérêt de ma recette est de paramétrer toutes les versions de dépendances que je manipule pour les tests. 
+L'intérêt de ma recette est de paramétrer toutes les versions de dépendances que je manipule pour les tests (et les builds from source de strapi, et de plugins strapi). 
 
 Je paramètrerai ainsi, dans les prochaines release : 
 * la version de NODEJS utilisée (j'améliorerais la construction de mes images avec une provision gérée NVM),
