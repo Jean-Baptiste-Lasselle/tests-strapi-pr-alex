@@ -13,7 +13,7 @@ services:
     restart: always
   strapi_api:
     container_name: jblsbootstrapi
-    image: carrefour/strapi:1.0.0
+    image: kytes/bootiestrapi:1.0.0
     build:
       context: ./construction/strapi
       args:
