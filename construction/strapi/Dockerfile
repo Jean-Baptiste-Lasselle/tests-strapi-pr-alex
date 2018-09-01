@@ -53,10 +53,10 @@ RUN apk add iputils
 
 
 # --- AJOUT POUR DEPLOIEMENT LIVRABLE DEV.
-RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV/livraison-dev
-WORKDIR $REPERTOIRE_LIVRAISON_DEV/livraison-dev
-ADD ./livraisons-dev/1/translation .
-WORKDIR /usr/src/api
+# RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV/livraison-dev
+# WORKDIR $REPERTOIRE_LIVRAISON_DEV/livraison-dev
+# ADD ./livraisons-dev/1/translation .
+# WORKDIR /usr/src/api
 
 RUN npm install -g strapi@3.0.0-alpha.13.1
 
