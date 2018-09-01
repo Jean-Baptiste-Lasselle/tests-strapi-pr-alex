@@ -5,9 +5,9 @@ Par exemple, dans la release `bootstrapi.previsible`, je montre que la partie au
 L'intérêt de ma recette est de paramétrer toutes les versions de dépendances que je manipule pour les tests. 
 
 Je paramètrerai ainsi, dans les prochaines release : 
-* la version de NODEJS utilisée,
+* la version de NODEJS utilisée (j'amélioreraisla construction de mes images avec une provision gérée NVM),
 * la version de REACTJS utilisée par strapi,
-* la version de MONGOOSE spécifiée dans la package.json de l'application,
+* la version de MONGOOSE spécifiée dans la package.json de l'application (j'ajouterai donc bien un contneur exécutant le build strapi, ainsi qu'un contneur repo NPM privé),
 * mais aussi la version de l'image docker mongo (qui définit la version de mongodb)
 * et surtout : la version de strapi, au sens du repo NPM officiel, i.e. la version à indiquer dans la commande :
 ```bash
