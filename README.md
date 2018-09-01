@@ -1,3 +1,160 @@
+# Deploiement du plugin exemple
+
+Logs avec le flot : 
+* démarrage serveur
+* création du premier utilisateur avec username=jbl, et password=jbl (et avec 3 caractères, ça passe)
+* arrivé dans l'administration, j'ai tenté de changer les langues etc..., j'ai obtenu une petite erreur apparaîssant dans les logs
+* et enfin, j'ai créé une utilisateur avec le username `vinse` et le mot de passe `vinsevinse`. Je lui donne le rôle "administrateur"
+
+Resutlat : 
+* Côté GUI, tout semble fonctionner correctemeent, j'arrive à me relogguer avec le username `vinse` et le mot de passe `vinsevinse`.
+* Côté logs : 
+
+```bash
+ ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ 
+total 0
+drwxr-xr-x    9 root     root           152 Aug 17 09:05 .
+drwxr-xr-x    8 root     root           261 Aug 17 09:05 ..
+drwxr-xr-x    8 root     root           194 Aug 17 09:05 content-manager
+drwxr-xr-x    9 root     root           185 Aug 17 09:05 content-type-builder
+drwxr-xr-x    8 root     root           172 Aug 17 09:05 email
+drwxr-xr-x    8 root     root           172 Aug 17 09:05 settings-manager
+drwxr-xr-x    6 root     root           144 Aug 17 09:05 translation
+drwxr-xr-x    9 root     root           186 Aug 17 09:05 upload
+drwxr-xr-x   11 root     root           217 Aug 17 09:05 users-permissions
+ ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ 
+[2018-08-17T09:05:41.851Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T09:05:41.853Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+(node:573) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:573) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+[2018-08-17T09:05:42.526Z] info Time: Fri Aug 17 2018 09:05:42 GMT+0000 (UTC)
+[2018-08-17T09:05:42.526Z] info Launched in: 3715 ms
+[2018-08-17T09:05:42.526Z] info Environment: development
+[2018-08-17T09:05:42.526Z] info Process PID: 573
+[2018-08-17T09:05:42.527Z] info Version: 3.0.0-alpha.13.1 (node v9.11.1)
+[2018-08-17T09:05:42.527Z] info To shut down your server, press <CTRL> + C at any time
+
+[2018-08-17T09:05:42.527Z] info ☄️  Admin panel: http://localhost:1337/admin
+[2018-08-17T09:05:42.527Z] info ⚡ Server: http://localhost:1337
+
+[2018-08-17T09:05:43.552Z] info File changed: /bootiestrapi/jbl-strapi/plugins/users-permissions/config/actions.json
+[2018-08-17T09:06:53.253Z] debug GET index.html (32 ms)
+[2018-08-17T09:06:57.561Z] debug GET index.html (5 ms)
+[2018-08-17T09:06:57.597Z] debug GET vendor.dll.js (5 ms)
+[2018-08-17T09:06:57.598Z] debug GET main.js (3 ms)
+[2018-08-17T09:06:57.972Z] debug GET plugins.json (6 ms)
+[2018-08-17T09:06:58.053Z] debug GET /admin/gaConfig (8 ms)
+[2018-08-17T09:06:58.072Z] debug GET /admin/strapiVersion (2 ms)
+[2018-08-17T09:06:58.076Z] debug GET /admin/currentEnvironment (2 ms)
+[2018-08-17T09:06:58.082Z] debug GET /admin/layout (4 ms)
+[2018-08-17T09:06:58.089Z] debug GET main.js (6 ms)
+[2018-08-17T09:06:58.090Z] debug GET main.js (4 ms)
+[2018-08-17T09:06:58.097Z] debug GET main.js (5 ms)
+[2018-08-17T09:06:58.108Z] debug GET main.js (10 ms)
+[2018-08-17T09:06:58.110Z] debug GET main.js (8 ms)
+[2018-08-17T09:06:58.112Z] debug GET main.js (8 ms)
+[2018-08-17T09:06:58.156Z] debug GET main.js (7 ms)
+[2018-08-17T09:06:58.157Z] debug GET 0.a8afc61b64504735cc95.chunk.js (4 ms)
+[2018-08-17T09:06:58.179Z] debug GET ac7d0ef8528ed4230148886fe1a21b3b.png (6 ms)
+[2018-08-17T09:06:58.193Z] debug GET bd03a2cc277bbbc338d464e679fe9942.woff2 (4 ms)
+[2018-08-17T09:06:58.199Z] debug GET c9cbbdc3762c340d5d37073a54971487.woff2 (5 ms)
+[2018-08-17T09:06:58.204Z] debug GET 7244318390cc4d36aac4a613ff42d308.woff2 (3 ms)
+[2018-08-17T09:06:58.211Z] debug GET af7ae505a9eed503f8b8e6982036873e.woff2 (6 ms)
+[2018-08-17T09:06:58.214Z] debug GET cccb897485813c7c256901dbca54ecf2.woff2 (6 ms)
+[2018-08-17T09:06:58.217Z] debug GET 8b4f872c5de19974857328d06d3fe48f.woff2 (5 ms)
+[2018-08-17T09:06:58.495Z] debug GET 20001789a249c0d8d721531434ce02ba.png (8 ms)
+[2018-08-17T09:06:58.498Z] debug GET f4b83ccf7e9e7f44b60b79a9a2a7be90.png (7 ms)
+[2018-08-17T09:06:58.498Z] debug GET 3c2fd7a5298d52578097b7258362d751.png (5 ms)
+[2018-08-17T09:06:58.501Z] debug GET 85f4e87cbdf8d922994c47a1356a856e.png (6 ms)
+[2018-08-17T09:06:58.508Z] debug GET cbd0516e7c1ab24d5c0a55a6ad0f635d.png (10 ms)
+[2018-08-17T09:06:58.511Z] debug GET c995503babdc2069f2d5f440b36771a1.png (9 ms)
+[2018-08-17T09:06:58.581Z] debug GET 80f6811f6c30735dab68a01372d8b78f.woff2 (2 ms)
+[2018-08-17T09:06:58.581Z] debug GET e89e581cc335503916d3001c717e40b2.png (4 ms)
+[2018-08-17T09:06:58.749Z] debug GET /users-permissions/init (12 ms)
+[2018-08-17T09:06:58.999Z] debug GET /settings-manager/autoReload (7 ms)
+[2018-08-17T09:06:59.203Z] debug GET /content-type-builder/autoReload (6 ms)
+[2018-08-17T09:06:59.541Z] debug GET 3.e894045e5095eb1a314c.chunk.js (3 ms)
+[2018-08-17T09:06:59.913Z] debug GET 2ff0049a00e47b56bffc059daf9be78b.png (7 ms)
+[2018-08-17T09:06:59.914Z] debug GET 0bd35bad03d09ca61ac6cce225112e36.svg (4 ms)
+[2018-08-17T09:06:59.936Z] debug GET 33d5f0d956f3fc30bc51f81047a2c47d.woff2 (4 ms)
+[2018-08-17T09:07:13.961Z] debug POST /auth/local/register (169 ms)
+[2018-08-17T09:07:14.147Z] debug GET /content-type-builder/autoReload (7 ms)
+[2018-08-17T09:07:14.148Z] debug GET /settings-manager/autoReload (13 ms)
+[2018-08-17T09:07:14.527Z] debug GET /content-manager/models (7 ms)
+(node:573) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+[2018-08-17T09:07:23.400Z] debug POST /content-type-builder/models/ (86 ms)
+[2018-08-17T09:07:23.402Z] info The server is restarting
+
+[2018-08-17T09:07:27.453Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T09:07:27.454Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+(node:673) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:673) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(node:673) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+(node:673) DeprecationWarning: collection.remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead.
+[2018-08-17T09:07:27.841Z] info Time: Fri Aug 17 2018 09:07:27 GMT+0000 (UTC)
+[2018-08-17T09:07:27.841Z] info Launched in: 3756 ms
+[2018-08-17T09:07:27.841Z] info Environment: development
+[2018-08-17T09:07:27.841Z] info Process PID: 673
+[2018-08-17T09:07:27.841Z] info Version: 3.0.0-alpha.13.1 (node v9.11.1)
+[2018-08-17T09:07:27.842Z] info To shut down your server, press <CTRL> + C at any time
+
+[2018-08-17T09:07:27.842Z] info ☄️  Admin panel: http://localhost:1337/admin
+[2018-08-17T09:07:27.842Z] info ⚡ Server: http://localhost:1337
+
+[2018-08-17T09:07:28.817Z] info File changed: /bootiestrapi/jbl-strapi/plugins/users-permissions/config/actions.json
+[2018-08-17T09:07:31.123Z] debug GET 2e6a10b1491e1872311c4f7a5dbc88cd.svg (38 ms)
+[2018-08-17T09:07:31.127Z] debug GET /content-type-builder/connections (24 ms)
+[2018-08-17T09:07:31.134Z] debug GET /content-type-builder/models (17 ms)
+[2018-08-17T09:07:31.136Z] debug GET 0bd35bad03d09ca61ac6cce225112e36.svg (17 ms)
+[2018-08-17T09:07:31.182Z] debug GET 0b6bb6725576b072c5d0b02ecdd1900d.woff2 (2 ms)
+[2018-08-17T09:07:33.798Z] debug GET /content-manager/models (7 ms)
+[2018-08-17T09:07:33.978Z] debug GET c6e5a6171e9789587d2e50f79a728506.svg (3 ms)
+[2018-08-17T09:07:38.291Z] debug GET /content-type-builder/connections (6 ms)
+[2018-08-17T09:07:38.301Z] debug GET /content-type-builder/models (9 ms)
+[2018-08-17T09:07:54.935Z] debug GET 9d8ee0474ab828be76768bbc484f71cc.svg (3 ms)
+[2018-08-17T09:07:54.953Z] debug GET f9d0d649d65cc9c946ed3668fdb72e51.png (2 ms)
+[2018-08-17T09:07:55.009Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (16 ms)
+[2018-08-17T09:07:55.018Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (18 ms)
+[2018-08-17T09:07:55.021Z] debug GET /content-manager/models (15 ms)
+[2018-08-17T09:07:55.060Z] debug GET e4b0213bd0c998e890a73ddc384f1ad5.svg (3 ms)
+[2018-08-17T09:07:55.076Z] debug GET 4eb103b4d12be57cb1d040ed5e162e9d.woff2 (1 ms)
+[2018-08-17T09:08:15.031Z] debug GET c6e5a6171e9789587d2e50f79a728506.svg (4 ms)
+[2018-08-17T09:08:15.082Z] debug GET /upload/files?_limit=10&_sort=hash&_start=0 (28 ms)
+[2018-08-17T09:08:15.085Z] debug GET /upload/files/count (20 ms)
+[2018-08-17T09:08:23.167Z] debug GET /users-permissions/roles (12 ms)
+Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`.
+
+  Error: Cannot wrap non-Error object
+      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
+      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
+      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
+      at <anonymous>
+
+[2018-08-17T09:10:27.187Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (6 ms)
+[2018-08-17T09:10:27.207Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (14 ms)
+[2018-08-17T09:10:27.210Z] debug GET /content-manager/models (14 ms)
+[2018-08-17T09:10:29.494Z] debug GET /content-manager/explorer/role/?_limit=20&_start=0&source=users-permissions (9 ms)
+[2018-08-17T09:10:46.557Z] debug POST /content-manager/explorer/user/?source=users-permissions (168 ms)
+[2018-08-17T09:10:47.059Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (13 ms)
+[2018-08-17T09:10:47.061Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (9 ms)
+[2018-08-17T09:10:50.296Z] debug GET /content-manager/explorer/role/?_limit=20&_start=0&source=users-permissions (8 ms)
+[2018-08-17T09:10:50.310Z] debug GET /content-manager/explorer/user/5b7691164504f702a185e31a?source=users-permissions (10 ms)
+[2018-08-17T09:10:54.075Z] debug PUT /content-manager/explorer/user/5b7691164504f702a185e31a?source=users-permissions (31 ms)
+[2018-08-17T09:10:54.404Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (10 ms)
+[2018-08-17T09:10:54.408Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (11 ms)
+[2018-08-17T09:11:08.328Z] debug POST /auth/local (123 ms)
+[2018-08-17T09:11:08.638Z] debug GET 20001789a249c0d8d721531434ce02ba.png (7 ms)
+[2018-08-17T09:11:08.639Z] debug GET f4b83ccf7e9e7f44b60b79a9a2a7be90.png (5 ms)
+[2018-08-17T09:11:08.642Z] debug GET 3c2fd7a5298d52578097b7258362d751.png (6 ms)
+[2018-08-17T09:11:08.649Z] debug GET 85f4e87cbdf8d922994c47a1356a856e.png (9 ms)
+[2018-08-17T09:11:08.650Z] debug GET cbd0516e7c1ab24d5c0a55a6ad0f635d.png (8 ms)
+[2018-08-17T09:11:08.650Z] debug GET c995503babdc2069f2d5f440b36771a1.png (4 ms)
+[2018-08-17T09:11:14.549Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (13 ms)
+[2018-08-17T09:11:14.551Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (10 ms)
+[2018-08-17T09:11:14.561Z] debug GET /content-manager/models (8 ms)
+
+```
+
 # Objet
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
@@ -13,6 +170,7 @@ Je paramètrerai ainsi, dans les prochaines release :
 ```bash
 npm install -g strapi@$NUMERO_VERSION_STRAPI
 ```
+
 
 
 
