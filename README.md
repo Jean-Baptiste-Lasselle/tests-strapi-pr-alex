@@ -1,4 +1,4 @@
-# Utilisation
+# Objet
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
 Par exemple, dans la release `bootstrapi.previsible`, je montre que la partie authentification de l'applciation pose un problème manifieste;
@@ -13,20 +13,9 @@ Je paramètrerai ainsi, dans les prochaines release :
 ```bash
 npm install -g strapi@$NUMERO_VERSION_STRAPI
 ```
-(pour le déploiement)
 
 
-```
-# export TAG_ID=tests-ligne-prod-1.0.1
-export TAG_ID=bootstrapi.previsible
-mkdir -p bootstrapi
-cd bootstrapi
-git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
-git checkout "$TAG_ID" 
-docekr-compose down && docker system prune -f && docker-compose build && docker-compose up -d && docker logs jblsbootstrapi -f 
-echo " Et comme l'on dit en un anglais parachevé: Et voilà!"
 
-```
 
 # [Strapi](https://bitbucket.agilefabric.fr.kytes.com/scm/dev/demandes-tests.git) re-containerized by Kytes Zeta Cloud Team !
 
@@ -79,11 +68,17 @@ The most advanced open-source Content Management Framework to build powerful API
 Cette 
 
 1. Récupérez la recette de provision de l'environnement : 
-```bash
-export MAISON_OPS=$(pwd)/provision-bootiestrapi
-mkdir -p $MAISON_OPS
-cd $MAISON_OPS
-git clone "https://jean_baptiste_lasselle@bitbucket.agilefabric.fr.kytes.com/scm/dev/demandes-tests.git" .
+
+```
+# export TAG_ID=tests-ligne-prod-1.0.1
+export TAG_ID=bootstrapi.previsible
+mkdir -p bootiestrapi
+cd bootiestrapi
+git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
+git checkout "$TAG_ID" 
+docekr-compose down && docker system prune -f && docker-compose build && docker-compose up -d && docker logs jblsbootstrapi -f 
+echo " Et comme l'on dit en un anglais parachevé: Et voilà!"
+
 ```
 2. Run using :
 ```bash
