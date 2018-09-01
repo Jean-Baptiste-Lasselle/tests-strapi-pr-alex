@@ -48,12 +48,12 @@ fi
 
 echo " ++ DEBUT DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
-ls -all /usr/src/api/$APP_NAME/
-mkdir -p /usr/src/api/$APP_NAME/plugins/translation
-cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev/* /usr/src/api/$APP_NAME/plugins/translation
+ls -all /bootiestrapi/$APP_NAME/
+mkdir -p /bootiestrapi/$APP_NAME/plugins/translation
+cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev/* /bootiestrapi/$APP_NAME/plugins/translation
 
 echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
-ls -all /usr/src/api/$APP_NAME/plugins/
+ls -all /bootiestrapi/$APP_NAME/plugins/
 echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
 
