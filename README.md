@@ -1,4 +1,8 @@
-# Bien me
+# Utilisation
+
+Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
+Par exemple, dans la release `bootstrapi.previsible`, je montre que la partie authentification de l'applciation pose un problème manifieste;
+L'intérêt de ma recette est de paramétrer toutes les versions de dépendances que je manipule pour les tests. Je paramètrerai ainsi, dans les prochaines release, la version de NODEJS utilisée, la versiond e REACTJS utilisée par strapi, la version de MONGOOSE spécifiée dans la package.json de l'application, mais aussi la version de l'image docker mongo (qui définit la version de mongodb)
 ```
 # export TAG_ID=tests-ligne-prod-1.0.1
 export TAG_ID=bootstrapi.previsible
