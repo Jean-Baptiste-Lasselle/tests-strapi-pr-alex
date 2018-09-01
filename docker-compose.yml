@@ -53,7 +53,7 @@ services:
 
   strapibdd:
     container_name: strapibdd
-    image: mongo
+    image: mongo:4.0.1
 #    hostname: strapibdd_1
     environment:
       - MONGO_INITDB_DATABASE=strapi
