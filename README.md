@@ -229,7 +229,8 @@ Cette
 
 ```
 # export TAG_ID=tests-ligne-prod-1.0.1
-export TAG_ID=bootiestrapi
+# export TAG_ID=bootiestrapi
+export TAG_ID=bootystrapi-plugins
 mkdir -p bootiestrapi
 cd bootiestrapi
 git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
