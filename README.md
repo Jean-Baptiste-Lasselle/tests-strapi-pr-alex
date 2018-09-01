@@ -77,7 +77,18 @@ Je paramètrerai ainsi, dans les prochaines release :
 npm install -g strapi@$NUMERO_VERSION_STRAPI
 ```
 
+## COnfiguration Post provision
 
+Pour terminer, j'ai trouvé une configuration qui règle certains problèmes de requêtage. DAns l'impression écran ci-dessous, on voir comment j'ai configuré ce paramètre, que je pense correspondre à l'hôte réseau du serveur backend strapi, à l'aide de l'interface graphique de l' "Admin Panel" Strapi.
+
+Pour cette configuration graphioque avec l'admin panel, il faut cliquer, en bas à gauche, sur le bouton "configuration", puis choisir "server". 
+
+Je n'ai aucun doute (pasz encore vérifié), qu'il soit possible de faire cette exacte même configuration à l'aide des fiheirs de configuration : 
+* `/bootiestrapi/$APP_NAME/config/environments/developent/server.json`
+* `/bootiestrapi/$APP_NAME/config/environments/staging/server.json`
+* `/bootiestrapi/$APP_NAME/config/environments/production/server.json`
+
+![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/configuration-backend-server-host.png)
 
 
 
