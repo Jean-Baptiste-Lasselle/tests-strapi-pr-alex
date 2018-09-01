@@ -45,6 +45,18 @@ fi
 # ls -all /usr/src/api/$APP_NAME/plugins/
 # echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
+
+echo " ++ DEBUT DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+
+ls -all /usr/src/api/$APP_NAME/
+mkdir -p /usr/src/api/$APP_NAME/plugins/translation
+cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev/* /usr/src/api/$APP_NAME/plugins/translation
+
+echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+ls -all /usr/src/api/$APP_NAME/plugins/
+echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+
+
 cd /bootiestrapi/$APP_NAME
 strapi start &
 
