@@ -33,15 +33,14 @@ ENV DATABASE_USERNAME=$DATABASE_USERNAME_PAR_DEFAUT
 
 ARG DATABASE_PASSWORD_PAR_DEFAUT
 ENV DATABASE_PASSWORD=$DATABASE_PASSWORD_PAR_DEFAUT
-
-ARG REPERTOIRE_LIVRAISON_DEV
-ENV REPERTOIRE_LIVRAISON_DEV=$REPERTOIRE_LIVRAISON_DEV
+ARG REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT
+ENV REPERTOIRE_LIVRAISON_DEV=$REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT
 
 
 RUN mkdir -p /bootiestrapi
 WORKDIR /bootiestrapi
 # -------------------------------------
-# - ajout d'utilitaires pour tests: 
+# - ajout d'utilitaires pour tests:
 # -------------------------------------
 
 RUN apk update
@@ -60,8 +59,8 @@ RUN apk add iputils
 # WORKDIR /usr/src/api
 
 # --- AJOUT POUR DEPLOIEMENT LIVRABLE DEV.
-RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV/livraison-dev
-WORKDIR $REPERTOIRE_LIVRAISON_DEV/livraison-dev
+RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV
+WORKDIR $REPERTOIRE_LIVRAISON_DEV
 ADD ./livraisons-dev/1/translation .
 
 
