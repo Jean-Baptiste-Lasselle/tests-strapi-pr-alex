@@ -71,7 +71,8 @@ Cette
 
 ```
 # export TAG_ID=tests-ligne-prod-1.0.1
-export TAG_ID=bootstrapi.previsible
+# export TAG_ID=bootstrapi.previsible
+export TAG_ID=bootstrapi.previsible-nu
 mkdir -p bootiestrapi
 cd bootiestrapi
 git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
