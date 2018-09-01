@@ -76,7 +76,7 @@ mkdir -p bootiestrapi
 cd bootiestrapi
 git clone "https://github.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex.git" .
 git checkout "$TAG_ID" 
-docekr-compose down && docker system prune -f && docker-compose build && docker-compose up -d && docker logs jblsbootstrapi -f 
+docker-compose down && docker system prune -f && docker-compose build && docker-compose up -d && docker logs jblsbootstrapi -f 
 echo " Et comme l'on dit en un anglais parachevé: Et voilà!"
 
 ```
