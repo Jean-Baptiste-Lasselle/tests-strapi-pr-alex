@@ -56,6 +56,66 @@ Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/
 [2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
 [2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
 ```
+
+Avec la dernière Release toujours, j'obtiens uen erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
+
+```bash
+2018-08-17T12:38:53.260Z] debug GET /admin/plugins (8 ms)
+[2018-08-17T12:38:58.727Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js (2 ms)
+[2018-08-17T12:38:58.774Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (3 ms)
+[2018-08-17T12:38:58.778Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (2 ms)
+[2018-08-17T12:39:00.036Z] debug GET a3c3ba8a7b850bd30d17358efa9e4649.png (4 ms)
+[2018-08-17T12:39:00.037Z] debug GET d9918a8a67770584f506e12d4c9e66c7.png (3 ms)
+[2018-08-17T12:39:04.184Z] debug GET ada4458b361d5e72bcbd19da105afdc5.woff2 (3 ms)
+[2018-08-17T12:39:08.547Z] info Installing graphql...
+[2018-08-17T12:39:22.403Z] info The server is restarting
+
+[2018-08-17T12:39:22.403Z] debug POST /admin/plugins/install (13864 ms)
+[2018-08-17T12:39:26.406Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T12:39:26.408Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+
+/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:466
+      throw err;
+      ^
+GraphQLError: Syntax Error: Invalid number, expected digit but got: "m".
+    at syntaxError (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/error/syntaxError.js:24:10)
+    at readDigits (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:437:32)
+    at readNumber (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:395:16)
+    at readToken (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:293:14)
+    at Object.lookahead (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:61:43)
+    at Object.advanceLexer [as advance] (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:52:33)
+    at expect (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1296:11)
+    at parseName (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:92:15)
+    at parseEnumValueDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:956:14)
+    at many (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1348:16)
+    at parseEnumValuesDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:945:50)
+    at parseEnumTypeDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:930:16)
+    at parseTypeSystemDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:669:16)
+    at parseDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:143:16)
+    at parseDocument (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:110:22)
+    at Object.parse (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:38:10)
+    at Object.addPolymorphicUnionType (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1263:27)
+    at Object.generateSchema (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1181:58)
+    at Function.initialize (/bootiestrapi/jbl-strapi/plugins/graphql/hooks/graphql/index.js:103:62)
+    at /usr/local/lib/node_modules/strapi/lib/hooks/index.js:19:29
+    at after (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:122:39)
+    at /usr/local/lib/node_modules/strapi/node_modules/lodash/lodash.js:9997:23
+    at Strapi.once (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:133:17)
+    at Object.onceWrapper (events.js:272:13)
+    at Strapi.emit (events.js:180:13)
+    at Strapi.emit (domain.js:422:20)
+    at loadedModule.initialize.call.err (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:32:12)
+    at NativeConnection.instance.connection.on (/bootiestrapi/jbl-strapi/node_modules/strapi-hook-mongoose/lib/index.js:459:11)
+    at NativeConnection.emit (events.js:180:13)
+    at NativeConnection.emit (domain.js:422:20)
+    at /bootiestrapi/jbl-strapi/node_modules/mongoose/lib/connection.js:549:13
+    at result (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:414:17)
+    at executeCallback (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:406:9)
+    at err (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:286:5)
+
+
+```
+
 # Objet
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, d'une instance bootstrapi dans une petite infrastructutre orchestrée par docker-compose.
