@@ -1,10 +1,5 @@
 # Deploiement du plugin exemple
 
-Logs avec le flot : 
-* démarrage serveur
-* création du premier utilisateur avec username=jbl, et password=jbl (et avec 3 caractères, ça passe)
-* arrivé dans l'administration, j'ai tenté de changer les langues etc..., j'ai obtenu une petite erreur apparaîssant dans les logs
-* et enfin, j'ai créé une utilisateur avec le username `vinse` et le mot de passe `vinsevinse`. Je lui donne le rôle "administrateur"
 
 Resutlat : 
 * Côté GUI, tout semble fonctionner correctemeent, j'arrive à me relogguer avec le username `vinse` et le mot de passe `vinsevinse`.
@@ -173,6 +168,17 @@ docker pull kytes/strapi
 ```
 N.B.: la publication n'a pas encore eu lieu
 -->
+
+4. On the machine your gonna access bootiestrapi using a browser, add the following entry to your `/etc/hosts` file : 
+```bash
+192.168.1.29    cms.zetacloud.kytes.io
+```
+Above, replace the IP address, with the defautl IP address of your docker host.
+
+N.B.: on Windows, `C:\Windows\System32\drivers\etc\hsots` ....
+
+5. Just browse to http://cms.zetacloud.kytes.io/ using Firefox, on the machine on which you modified the `/etc/hosts` file.
+
 
 
 
