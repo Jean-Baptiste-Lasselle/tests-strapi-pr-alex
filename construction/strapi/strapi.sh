@@ -39,7 +39,7 @@ fi
 
 # ls -all /usr/src/api/$APP_NAME/
 # mkdir -p /usr/src/api/$APP_NAME/plugins/translation
-# cp -Rf $REPERTOIRE_LIVRAISON_DEV/livraison-dev/* /usr/src/api/$APP_NAME/plugins/translation
+# cp -Rf $REPERTOIRE_LIVRAISON_DEV/* /usr/src/api/$APP_NAME/plugins/translation
 
 # echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 # ls -all /usr/src/api/$APP_NAME/plugins/
