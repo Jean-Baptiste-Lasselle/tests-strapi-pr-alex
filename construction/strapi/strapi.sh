@@ -9,7 +9,7 @@ _stopStrapi() {
 
 trap _stopStrapi SIGTERM SIGINT
 
-cd /usr/src/api
+cd /bootiestrapi
 
 # APP_NAME=${APP_NAME:-strapi-app}
 # DATABASE_CLIENT=${DATABASE_CLIENT:-mongo}
@@ -45,7 +45,7 @@ fi
 # ls -all /usr/src/api/$APP_NAME/plugins/
 # echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
-cd /usr/src/api/$APP_NAME
+cd /bootiestrapi/$APP_NAME
 strapi start &
 
 strapiPID=$!
