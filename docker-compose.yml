@@ -9,7 +9,7 @@ services:
     volumes:
       - ./nginx/conf/strapi.conf:/etc/nginx/conf.d/strapi.conf
     links:
-      - strapi_api 
+      - strapi_api
     restart: always
   strapi_api:
     container_name: jblsbootstrapi
@@ -27,8 +27,7 @@ services:
         # - HOST=localhost
         # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
         - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/bootiestrapi/livraison-dev
-        # le répertorie dans lequel on invoque strapi new doit être vide, donc /usr/src/api
-        - REPERTOIRE_LIVRAISON_DEV=/usr/src/livraison-dev
+        # le répertorie dans lequel on invoque strapi new doit être vide, donc /bootiestrapi/livraison-dev <=> /bootiestrapi/jbl-strapi
 
     environment:
       - APP_NAME=jbl-strapi
