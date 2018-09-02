@@ -186,6 +186,7 @@ Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/
 [2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
 [2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
 ```
+À propos de l'erreur concernant le déploiement du plugin "translation" : il faut savori que c'est le "Content Manager", qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe de "RestControllers", des "EndPoints de REST API"). Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`. Jepeux donc essayer de supprimer ce fichier au moment du déploiement.
 
 Avec la dernière Release toujours, j'obtiens uen erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
 
