@@ -28,6 +28,8 @@ services:
         # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
         - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/bootiestrapi/livraison-dev
         # le répertorie dans lequel on invoque strapi new doit être vide, donc /bootiestrapi/livraison-dev <=> /bootiestrapi/jbl-strapi
+        # la version du framework strapi utilisée
+        - VERSION_FRAMEWORK_STRAPI_PAR_DEFAUT=3.0.0-alpha.13.1
 
     environment:
       - APP_NAME=jbl-strapi
@@ -40,6 +42,8 @@ services:
       # - HOST=localhost
       # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
       - REPERTOIRE_LIVRAISON_DEV=/bootiestrapi/livraison-dev
+      # la version du framework strapi utilisée
+      - VERSION_FRAMEWORK_STRAPI_PAR_DEFAUT=3.0.0-alpha.14
 
     ports:
       - 1337:1337
