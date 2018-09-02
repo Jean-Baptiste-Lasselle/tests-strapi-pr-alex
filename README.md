@@ -1,4 +1,17 @@
 
+# [Bootiestrapi](#), a [Strapi](https://github.com/Jean-Baptiste-Lasselle/strapi/strapi) re-containerized by Kytes Zeta Cloud Team !
+
+![Kytes Zeta Cloud CMS](https://cms.zetacloud.kytes.com)
+
+API creation made simple, secure and fast.
+The most advanced open-source Content Management Framework to build powerful API with no effort.
+
+***
+
+[![Travis](https://img.shields.io/travis/strapi/strapi-docker.svg?style=for-the-badge)](https://travis-ci.org/strapi/strapi-docker)
+[![GitHub release](https://img.shields.io/github/release/strapi/strapi-docker.svg?style=for-the-badge)](https://github.com/strapi/strapi-docker/releases)
+[![Docker Pulls](https://img.shields.io/docker/pulls/strapi/strapi.svg?style=for-the-badge)](https://hub.docker.com/r/strapi/strapi) 
+
 # Objet
 
 Chaque release de ce repo, correpsond à un test que j'ai mené, concernant [Strapi.io](https://strapi.io). Je re-package strapi, aussi j'ai baptisée ma distribution *bootiestrapi*. Je mène ces tests dans une petite infrastructutre orchestrée par docker-compose.
@@ -35,18 +48,7 @@ Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`,
 ![Admin Panel: configuration CORS strapi front END ou bacend Valeur de l'Origin](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/et-aller-pour-la-conf-cors-security.json.png)
 
 
-# [Strapi](https://bitbucket.agilefabric.fr.kytes.com/scm/dev/demandes-tests.git) re-containerized by Kytes Zeta Cloud Team !
 
-![Kytes Zeta Cloud CMS](https://cms.zetacloud.kytes.com)
-
-API creation made simple, secure and fast.
-The most advanced open-source Content Management Framework to build powerful API with no effort.
-
-***
-
-[![Travis](https://img.shields.io/travis/strapi/strapi-docker.svg?style=for-the-badge)](https://travis-ci.org/strapi/strapi-docker)
-[![GitHub release](https://img.shields.io/github/release/strapi/strapi-docker.svg?style=for-the-badge)](https://github.com/strapi/strapi-docker/releases)
-[![Docker Pulls](https://img.shields.io/docker/pulls/strapi/strapi.svg?style=for-the-badge)](https://hub.docker.com/r/strapi/strapi)
 
 ## Utilisation
 
