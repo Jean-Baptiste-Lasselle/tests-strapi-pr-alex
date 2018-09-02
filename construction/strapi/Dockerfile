@@ -37,6 +37,10 @@ ARG REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT
 ENV REPERTOIRE_LIVRAISON_DEV=$REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT
 
 
+# ARG VERSION_FRAMEWORK_STRAPI_PAR_DEFAUT=3.0.0-alpha.13.1
+ARG VERSION_FRAMEWORK_STRAPI_PAR_DEFAUT
+ENV VERSION_FRAMEWORK_STRAPI=$VERSION_FRAMEWORK_STRAPI_PAR_DEFAUT
+
 RUN mkdir -p /bootiestrapi
 WORKDIR /bootiestrapi
 # -------------------------------------
@@ -65,7 +69,7 @@ ADD ./livraisons-dev/1/translation .
 
 WORKDIR /bootiestrapi
 
-RUN npm install -g strapi@3.0.0-alpha.13.1
+RUN npm install -g strapi@$VERSION_FRAMEWORK_STRAPI
 
 COPY strapi.sh ./
 RUN chmod +x ./strapi.sh
