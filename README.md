@@ -1,5 +1,5 @@
 
-# [Bootiestrapi](#), a [Strapi](https://github.com/Jean-Baptiste-Lasselle/strapi/strapi) re-containerized by Kytes Zeta Cloud Team !
+# [Bootiestrapi](#), a [Strapi](https://github.com/strapi/strapi) re-containerized by Kytes Zeta Cloud Team !
 
 ![Kytes Zeta Cloud CMS](https://cms.zetacloud.kytes.com)
 
