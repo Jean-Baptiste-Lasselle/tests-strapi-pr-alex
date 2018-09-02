@@ -30,26 +30,6 @@ Je paramètrerai ainsi, dans les prochaines release :
 npm install -g strapi@$NUMERO_VERSION_STRAPI
 ```
 
-## Configuration Post provision
-
-Pour terminer, j'ai trouvé une configuration qui règle certains problèmes de requêtage. DAns l'impression écran ci-dessous, on voir comment j'ai configuré ce paramètre, que je pense correspondre à l'hôte réseau du serveur backend strapi, à l'aide de l'interface graphique de l' "Admin Panel" Strapi.
-
-Pour cette configuration graphioque avec l'admin panel, il faut cliquer, en bas à gauche, sur le bouton "configuration", puis choisir "server". 
-
-Je n'ai aucun doute (pasz encore vérifié), qu'il soit possible de faire cette exacte même configuration à l'aide des fiheirs de configuration : 
-* `/bootiestrapi/$APP_NAME/config/environments/developent/server.json`
-* `/bootiestrapi/$APP_NAME/config/environments/staging/server.json`
-* `/bootiestrapi/$APP_NAME/config/environments/production/server.json`
-
-![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/conf-hote-reseau-backend-strapi.png)
-
-Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`, et l'admin panel, indique avec le petit voyant vert, quel est l'environnement actif (ci-dessous, l'env. `development`, la conf CORS est donc dans `/bootiestrapi/$APP_NAME/conf/environments/development/security.json`) : 
-
-![Admin Panel: configuration CORS strapi front END ou bacend Valeur de l'Origin](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/et-aller-pour-la-conf-cors-security.json.png)
-
-
-
-
 ## Utilisation
 
 0. Cette recette permet de déployer Strapi : 
@@ -130,9 +110,26 @@ N.B.: on Windows, `C:\Windows\System32\drivers\etc\hsots` ....
 5. Just browse to http://cms.zetacloud.kytes.io/ using Firefox, on the machine on which you modified the `/etc/hosts` file.
 
 
+## Configuration Post provision
+
+Pour terminer, j'ai trouvé une configuration qui règle certains problèmes de requêtage. DAns l'impression écran ci-dessous, on voir comment j'ai configuré ce paramètre, que je pense correspondre à l'hôte réseau du serveur backend strapi, à l'aide de l'interface graphique de l' "Admin Panel" Strapi.
+
+Pour cette configuration graphioque avec l'admin panel, il faut cliquer, en bas à gauche, sur le bouton "configuration", puis choisir "server". 
+
+Je n'ai aucun doute (pasz encore vérifié), qu'il soit possible de faire cette exacte même configuration à l'aide des fiheirs de configuration : 
+* `/bootiestrapi/$APP_NAME/config/environments/developent/server.json`
+* `/bootiestrapi/$APP_NAME/config/environments/staging/server.json`
+* `/bootiestrapi/$APP_NAME/config/environments/production/server.json`
+
+![Admin Panel: configuration host backend strapi](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/conf-hote-reseau-backend-strapi.png)
+
+Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`, et l'admin panel, indique avec le petit voyant vert, quel est l'environnement actif (ci-dessous, l'env. `development`, la conf CORS est donc dans `/bootiestrapi/$APP_NAME/conf/environments/development/security.json`) : 
+
+![Admin Panel: configuration CORS strapi front END ou bacend Valeur de l'Origin](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/et-aller-pour-la-conf-cors-security.json.png)
 
 
-# Deploiement du plugin exemple
+
+## Résultats: Deploiement du plugin exemple
 
 
 Resutlat : 
