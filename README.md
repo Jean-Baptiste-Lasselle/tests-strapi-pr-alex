@@ -132,29 +132,47 @@ Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`,
 
 ### Strapi 14, sans déploiement du plugin exemple 
 
-Dans la release `bootiestrapi`, strapi est entièrement re-packagée, focntionne corectement :+1: 
+Ces résultat sont les résultats des tests menés avec la relese `bootiestrapi`.
+
+Dans cette release, strapi est entièrement re-packagée, déployée seul, sans aucun autre déploiement.
+Stapi fonctionne corectement :+1:, et :
+
  - J'ai  forcé, cf. docker-compose.yml, la version de l'image docker mongo, au numéro de version indiqué par un anglophoen que je remercierai, i.e. `mongo:4.0.1`  
  - La creation des utilisateurs est testée, et fonctionne (on peut s'authentifier et entrer dans l'admin lorsque l'on a le rôle admi)
  - J'ai testé l'installation, via la "marketplace", du plugin strapi gratuit `graphql`
  - Je suis passé en Strapi 3.0.0@alpha-14.0
+Sans le déploiement du plugin exemple `translation`, strapi fonctionne parfaitement, et ce sans toucher au stack NodeJS, mais : 
+ - On a une grosse faille de sécurité sur les hash de mots de passe à la modification d'un utilisateur dans les  `Users` (`Content Types`, menu vertical gauche), et donc l'impossiblité de changer un mot de passe d'un utilsiateur. JE n'ai pas testé le doucble check par email de confirmation, ou tout autre mécanisme de password recovery.
 
-Sans le déploiement du plugin exemple `translation`, strapi fonctionne parfaitement, et ce sans toucher au stack NodeJS.
+Impression écran pour l'erreur sur les mots de passe : 
 
-Par contre, on a toujours la grosse faille de sécurité sur les hash de mots de passe à la modification d'un utilisateur dans les  `Users` (`Content Types`, menu vertical gauche), et donc l'impossiblité de changer un mot de passe d'un utilsiateur. JE n'ai pas testé le doucble check par email de confirmation, ou tout autre mécanisme de password recovery.
+![Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
 
 
 
 ### Strapi 14, avec  déploiement du plugin exemple 
 
+Ces résultat sont les résultats des tests menés avec la relese `bootiestrapi-plugins`
 
-Resutlat : 
+Dans cette release, strapi est entièrement re-packagée, déployée seul, sans aucun autre déploiement.
+Stapi présente des dysfonctionnements, et :
+
+ - J'ai  forcé, cf. docker-compose.yml, la version de l'image docker mongo, au numéro de version indiqué par un anglophoen que je remercierai, i.e. `mongo:4.0.1`  
+ - La creation des utilisateurs est testée, et fonctionne (on peut s'authentifier et entrer dans l'admin lorsque l'on a le rôle admi)
+ - J'ai testé l'installation, via la "marketplace", du plugin strapi gratuit `graphql`
+ - Je suis passé en Strapi 3.0.0@alpha-14.0
+ 
+#### Résultats des tests
+ 
 * Côté GUI, j'arrive à me relogguer avec le username `bernard` et le mot de passe `mdpbernard`, si je crée (avec l'utilisateur créé initialement) un tel utilisateur, et lui donnele rôle `Administrateur`.
-* Côté fonctionnel, grosse faille de sécurité admin à la gestion des utilisateurs + impossibilité de changer le mot de passe d'un utilisateur :
+* On a la même grosse faille de sécurité sur les hash de mots de passe à la modification d'un utilisateur dans les  `Users` (`Content Types`, menu vertical gauche), et donc l'impossiblité de changer un mot de passe d'un utilsiateur. JE n'ai pas testé le doucble check par email de confirmation, ou tout autre mécanisme de password recovery.
 
+Impression écran pour l'erreur sur les mots de passe : 
 
 ![Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
 
-* Enfin, côté logs, on s'aperçoit qu'il y a manifestement un problème avec le petit plugin exemple `translation`, que j'ai déployé : 
+
+* Côté logs, on s'aperçoit qu'il y a manifestement un problème avec le petit plugin exemple `translation`, que j'ai déployé : 
 
 ```bash
 [2018-08-17T10:44:02.854Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
@@ -211,10 +229,15 @@ En atteste le 'impression écran suivante, dans laqeulle j'arrive à provoquer l
 Donc le code du plugin essaie de créer le modèle "Langues", à chaque fois que l'on accède au menu. Il faut changer cette logique, et re-voir le code.
 
 
-
-
-À propos de cette même erreur , concernant le déploiement du plugin "translation" : il faut savor que c'est le "Content Manager", qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe de "RestControllers", des "EndPoints de REST API"). Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`. J'ai donc essayé de supprimer ce fichier au moment du déploiement., mais la double génération du modèle `langues` survient après le strapi start, et donc provoquée par la seule présence du plugin exemple `translation`.
-
+   *À propos de cette même erreur* : il faut savoir que c'est le "Content 
+   Manager", dans l'architecture strapi, qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe 
+   de "RestControllers", des "EndPoints de REST API"). 
+   Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier 
+   qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`.
+   J'ai donc essayé de supprimer ce 
+   fichier au moment du déploiement. Mais la génération redondante du modèle `langues`, qui pose problème et motive le log de 
+   l'erreur lisible ci-dessus, survient après le strapi start: elle donc provoquée par le déploieemnt du 
+   plugin exemple `translation`.
 
 Avec la dernière Release toujours, la "alpha14", la présence du plugin `translation` provoque une erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
 
