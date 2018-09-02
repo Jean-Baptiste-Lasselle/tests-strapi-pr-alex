@@ -141,6 +141,9 @@ Stapi fonctionne corectement :+1:, et :
  - La creation des utilisateurs est testée, et fonctionne (on peut s'authentifier et entrer dans l'admin lorsque l'on a le rôle admi)
  - J'ai testé l'installation, via la "marketplace", du plugin strapi gratuit `graphql`
  - Je suis passé en Strapi 3.0.0@alpha-14.0
+
+#### Résultats des tests
+
 Sans le déploiement du plugin exemple `translation`, strapi fonctionne parfaitement, et ce sans toucher au stack NodeJS, mais : 
  - On a une grosse faille de sécurité sur les hash de mots de passe à la modification d'un utilisateur dans les  `Users` (`Content Types`, menu vertical gauche), et donc l'impossiblité de changer un mot de passe d'un utilsiateur. JE n'ai pas testé le doucble check par email de confirmation, ou tout autre mécanisme de password recovery.
 
