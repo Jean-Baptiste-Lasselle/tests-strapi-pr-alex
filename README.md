@@ -128,11 +128,27 @@ Le paramètre de configuration `CORS`, pour le champs "Origin", a la valeur `*`,
 
 
 
-## Résultats: Deploiement du plugin exemple
+## Résultats
+
+### Strapi 14, sans déploiement du plugin exemple 
+
+Dans la release `bootiestrapi`, strapi est entièrement re-packagée, focntionne corectement :+1: 
+ - J'ai  forcé, cf. docker-compose.yml, la version de l'image docker mongo, au numéro de version indiqué par un anglophoen que je remercierai, i.e. `mongo:4.0.1`  
+ - La creation des utilisateurs est testée, et fonctionne (on peut s'authentifier et entrer dans l'admin lorsque l'on a le rôle admi)
+ - J'ai testé l'installation, via la "marketplace", du plugin strapi gratuit `graphql`
+ - Je suis passé en Strapi 3.0.0@alpha-14.0
+
+Sans le déploiement du plugin exemple `translation`, strapi fonctionne parfaitement, et ce sans toucher au stack NodeJS.
+
+Par contre, on a toujours la grosse faille de sécurité sur les hash de mots de passe à la modification d'un utilisateur dans les  `Users` (`Content Types`, menu vertical gauche), et donc l'impossiblité de changer un mot de passe d'un utilsiateur. JE n'ai pas testé le doucble check par email de confirmation, ou tout autre mécanisme de password recovery.
+
+
+
+### Strapi 14, avec  déploiement du plugin exemple 
 
 
 Resutlat : 
-* Côté GUI, tout semble fonctionner correctemeent, j'arrive à me relogguer avec le username `vinse` et le mot de passe `vinsevinse`.
+* Côté GUI, j'arrive à me relogguer avec le username `bernard` et le mot de passe `mdpbernard`, si je crée (avec l'utilisateur créé initialement) un tel utilisateur, et lui donnele rôle `Administrateur`.
 * Côté fonctionnel, grosse faille de sécurité admin à la gestion des utilisateurs + impossibilité de changer le mot de passe d'un utilisateur :
 
 
@@ -186,9 +202,12 @@ Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/
 [2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
 [2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
 ```
-À propos de l'erreur concernant le déploiement du plugin "translation" : il faut savori que c'est le "Content Manager", qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe de "RestControllers", des "EndPoints de REST API"). Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`. Jepeux donc essayer de supprimer ce fichier au moment du déploiement.
+Cette erreur apparait dans les ogs, par exemple lorsuqe l'on clique sur le menu `Users` (cf. `Content Types`, menu vertical gauche).
 
-Avec la dernière Release toujours, j'obtiens uen erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
+À propos de cette même erreur , concernant le déploiement du plugin "translation" : il faut savor que c'est le "Content Manager", qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe de "RestControllers", des "EndPoints de REST API"). Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`. J'ai donc essayé de supprimer ce fichier au moment du déploiement., mais la double génération du modèle `langues` survient après le strapi start, et donc provoquée par la seule présence du plugin exemple `translation`.
+
+
+Avec la dernière Release toujours, la "alpha14", la présence du plugin `translation` provoque une erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
 
 ```bash
 2018-08-17T12:38:53.260Z] debug GET /admin/plugins (8 ms)
