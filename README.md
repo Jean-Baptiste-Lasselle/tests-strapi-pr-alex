@@ -105,7 +105,7 @@ N.B.: la publication n'a pas encore eu lieu
 ```
 Above, replace the IP address, with the defautl IP address of your docker host.
 
-N.B.: on Windows, `C:\Windows\System32\drivers\etc\hsots` ....
+N.B.: on Windows, `C:\Windows\System32\drivers\etc\hosts` ....
 
 5. Just browse to http://cms.zetacloud.kytes.io/ using Firefox, on the machine on which you modified the `/etc/hosts` file.
 
