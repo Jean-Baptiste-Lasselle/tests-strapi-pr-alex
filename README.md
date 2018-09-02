@@ -1,120 +1,3 @@
-# Deploiement du plugin exemple
-
-
-Resutlat : 
-* Côté GUI, tout semble fonctionner correctemeent, j'arrive à me relogguer avec le username `vinse` et le mot de passe `vinsevinse`.
-* Côté fonctionnel, grosse faille de sécurité admin à la gestion des utilisateurs + impossibilité de changer le mot de passe d'un utilisateur :
-
-
-![Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
-
-* Enfin, côté logs, on s'aperçoit qu'il y a manifestement un problème avec le petit plugin exemple `translation`, que j'ai déployé : 
-
-```bash
-[2018-08-17T10:44:02.854Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
-[2018-08-17T10:44:02.856Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
-(node:1180) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
-(node:1180) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
-(node:1180) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
-(node:1180) DeprecationWarning: collection.remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead.
-[2018-08-17T10:44:03.227Z] info Time: Fri Aug 17 2018 10:44:03 GMT+0000 (UTC)
-[2018-08-17T10:44:03.227Z] info Launched in: 3486 ms
-[2018-08-17T10:44:03.227Z] info Environment: development
-[2018-08-17T10:44:03.227Z] info Process PID: 1180
-[2018-08-17T10:44:03.227Z] info Version: 3.0.0-alpha.13.1 (node v9.11.1)
-[2018-08-17T10:44:03.227Z] info To shut down your server, press <CTRL> + C at any time
-
-[2018-08-17T10:44:03.227Z] info ☄️  Admin panel: http://localhost:1337/admin
-[2018-08-17T10:44:03.228Z] info ⚡️ Server: http://localhost:1337
-
-[2018-08-17T10:44:04.474Z] info File changed: /bootiestrapi/jbl-strapi/plugins/users-permissions/config/actions.json
-[2018-08-17T10:44:06.949Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (46 ms)
-[2018-08-17T10:44:06.963Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (35 ms)
-[2018-08-17T10:44:06.966Z] debug GET /content-manager/models (31 ms)
-Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`.
-
-  Error: Cannot wrap non-Error object
-      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
-      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
-      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
-      at <anonymous>
-
-[2018-08-17T10:44:12.919Z] debug GET /users-permissions/roles (10 ms)
-Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/Langues.js`.
-
-  Error: Cannot wrap non-Error object
-      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
-      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
-      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
-      at <anonymous>
-
-[2018-08-17T10:44:17.345Z] debug GET /settings-manager/configurations/environments (6 ms)
-[2018-08-17T10:44:17.347Z] debug GET /settings-manager/menu (10 ms)
-[2018-08-17T10:44:17.533Z] debug GET /settings-manager/configurations/application (6 ms)
-[2018-08-17T10:44:28.142Z] debug GET /settings-manager/configurations/server/development (6 ms)
-[2018-08-17T10:44:31.267Z] debug GET /settings-manager/configurations/server/production (5 ms)
-[2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
-[2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
-```
-
-Avec la dernière Release toujours, j'obtiens uen erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
-
-```bash
-2018-08-17T12:38:53.260Z] debug GET /admin/plugins (8 ms)
-[2018-08-17T12:38:58.727Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js (2 ms)
-[2018-08-17T12:38:58.774Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (3 ms)
-[2018-08-17T12:38:58.778Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (2 ms)
-[2018-08-17T12:39:00.036Z] debug GET a3c3ba8a7b850bd30d17358efa9e4649.png (4 ms)
-[2018-08-17T12:39:00.037Z] debug GET d9918a8a67770584f506e12d4c9e66c7.png (3 ms)
-[2018-08-17T12:39:04.184Z] debug GET ada4458b361d5e72bcbd19da105afdc5.woff2 (3 ms)
-[2018-08-17T12:39:08.547Z] info Installing graphql...
-[2018-08-17T12:39:22.403Z] info The server is restarting
-
-[2018-08-17T12:39:22.403Z] debug POST /admin/plugins/install (13864 ms)
-[2018-08-17T12:39:26.406Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
-[2018-08-17T12:39:26.408Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
-
-/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:466
-      throw err;
-      ^
-GraphQLError: Syntax Error: Invalid number, expected digit but got: "m".
-    at syntaxError (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/error/syntaxError.js:24:10)
-    at readDigits (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:437:32)
-    at readNumber (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:395:16)
-    at readToken (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:293:14)
-    at Object.lookahead (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:61:43)
-    at Object.advanceLexer [as advance] (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:52:33)
-    at expect (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1296:11)
-    at parseName (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:92:15)
-    at parseEnumValueDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:956:14)
-    at many (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1348:16)
-    at parseEnumValuesDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:945:50)
-    at parseEnumTypeDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:930:16)
-    at parseTypeSystemDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:669:16)
-    at parseDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:143:16)
-    at parseDocument (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:110:22)
-    at Object.parse (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:38:10)
-    at Object.addPolymorphicUnionType (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1263:27)
-    at Object.generateSchema (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1181:58)
-    at Function.initialize (/bootiestrapi/jbl-strapi/plugins/graphql/hooks/graphql/index.js:103:62)
-    at /usr/local/lib/node_modules/strapi/lib/hooks/index.js:19:29
-    at after (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:122:39)
-    at /usr/local/lib/node_modules/strapi/node_modules/lodash/lodash.js:9997:23
-    at Strapi.once (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:133:17)
-    at Object.onceWrapper (events.js:272:13)
-    at Strapi.emit (events.js:180:13)
-    at Strapi.emit (domain.js:422:20)
-    at loadedModule.initialize.call.err (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:32:12)
-    at NativeConnection.instance.connection.on (/bootiestrapi/jbl-strapi/node_modules/strapi-hook-mongoose/lib/index.js:459:11)
-    at NativeConnection.emit (events.js:180:13)
-    at NativeConnection.emit (domain.js:422:20)
-    at /bootiestrapi/jbl-strapi/node_modules/mongoose/lib/connection.js:549:13
-    at result (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:414:17)
-    at executeCallback (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:406:9)
-    at err (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:286:5)
-
-
-```
 
 # Objet
 
@@ -245,9 +128,123 @@ N.B.: on Windows, `C:\Windows\System32\drivers\etc\hsots` ....
 
 
 
-## Informations
+# Deploiement du plugin exemple
 
 
+Resutlat : 
+* Côté GUI, tout semble fonctionner correctemeent, j'arrive à me relogguer avec le username `vinse` et le mot de passe `vinsevinse`.
+* Côté fonctionnel, grosse faille de sécurité admin à la gestion des utilisateurs + impossibilité de changer le mot de passe d'un utilisateur :
+
+
+![Faille sécu strapi mdp hash](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/faille-strapi-secu-mdp-hash.png)
+
+* Enfin, côté logs, on s'aperçoit qu'il y a manifestement un problème avec le petit plugin exemple `translation`, que j'ai déployé : 
+
+```bash
+[2018-08-17T10:44:02.854Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T10:44:02.856Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+(node:1180) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+(node:1180) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(node:1180) DeprecationWarning: collection.count is deprecated, and will be removed in a future version. Use collection.countDocuments or collection.estimatedDocumentCount instead
+(node:1180) DeprecationWarning: collection.remove is deprecated. Use deleteOne, deleteMany, or bulkWrite instead.
+[2018-08-17T10:44:03.227Z] info Time: Fri Aug 17 2018 10:44:03 GMT+0000 (UTC)
+[2018-08-17T10:44:03.227Z] info Launched in: 3486 ms
+[2018-08-17T10:44:03.227Z] info Environment: development
+[2018-08-17T10:44:03.227Z] info Process PID: 1180
+[2018-08-17T10:44:03.227Z] info Version: 3.0.0-alpha.13.1 (node v9.11.1)
+[2018-08-17T10:44:03.227Z] info To shut down your server, press <CTRL> + C at any time
+
+[2018-08-17T10:44:03.227Z] info ☄️  Admin panel: http://localhost:1337/admin
+[2018-08-17T10:44:03.228Z] info ⚡️ Server: http://localhost:1337
+
+[2018-08-17T10:44:04.474Z] info File changed: /bootiestrapi/jbl-strapi/plugins/users-permissions/config/actions.json
+[2018-08-17T10:44:06.949Z] debug GET /content-manager/explorer/user/count?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (46 ms)
+[2018-08-17T10:44:06.963Z] debug GET /content-manager/explorer/user?_limit=10&_start=0&_sort=_id%3AASC&source=users-permissions (35 ms)
+[2018-08-17T10:44:06.966Z] debug GET /content-manager/models (31 ms)
+Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`.
+
+  Error: Cannot wrap non-Error object
+      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
+      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
+      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
+      at <anonymous>
+
+[2018-08-17T10:44:12.919Z] debug GET /users-permissions/roles (10 ms)
+Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/Langues.js`.
+
+  Error: Cannot wrap non-Error object
+      at Object.exports.assert (/usr/local/lib/node_modules/strapi/node_modules/hoek/lib/index.js:740:11)
+      at Object.exports.wrap (/usr/local/lib/node_modules/strapi/node_modules/boom/lib/index.js:95:10)
+      at strapi.app.use (/usr/local/lib/node_modules/strapi/lib/middlewares/boom/index.js:35:20)
+      at <anonymous>
+
+[2018-08-17T10:44:17.345Z] debug GET /settings-manager/configurations/environments (6 ms)
+[2018-08-17T10:44:17.347Z] debug GET /settings-manager/menu (10 ms)
+[2018-08-17T10:44:17.533Z] debug GET /settings-manager/configurations/application (6 ms)
+[2018-08-17T10:44:28.142Z] debug GET /settings-manager/configurations/server/development (6 ms)
+[2018-08-17T10:44:31.267Z] debug GET /settings-manager/configurations/server/production (5 ms)
+[2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
+[2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
+```
+
+Avec la dernière Release toujours, j'obtiens uen erreur du type suivant, dans les logs conteneur, lorsque j'esssaie d'installer le plugin "graphql", via la marketplace : 
+
+```bash
+2018-08-17T12:38:53.260Z] debug GET /admin/plugins (8 ms)
+[2018-08-17T12:38:58.727Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js (2 ms)
+[2018-08-17T12:38:58.774Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (3 ms)
+[2018-08-17T12:38:58.778Z] debug GET 1.9f1c8d13ee5efc839582.chunk.js.map (2 ms)
+[2018-08-17T12:39:00.036Z] debug GET a3c3ba8a7b850bd30d17358efa9e4649.png (4 ms)
+[2018-08-17T12:39:00.037Z] debug GET d9918a8a67770584f506e12d4c9e66c7.png (3 ms)
+[2018-08-17T12:39:04.184Z] debug GET ada4458b361d5e72bcbd19da105afdc5.woff2 (3 ms)
+[2018-08-17T12:39:08.547Z] info Installing graphql...
+[2018-08-17T12:39:22.403Z] info The server is restarting
+
+[2018-08-17T12:39:22.403Z] debug POST /admin/plugins/install (13864 ms)
+[2018-08-17T12:39:26.406Z] warn Ignored attempt to bind route 'GET /example' to unknown controller/action.
+[2018-08-17T12:39:26.408Z] warn Ignored attempt to bind route 'GET /models/reload' to unknown controller/action.
+
+/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:466
+      throw err;
+      ^
+GraphQLError: Syntax Error: Invalid number, expected digit but got: "m".
+    at syntaxError (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/error/syntaxError.js:24:10)
+    at readDigits (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:437:32)
+    at readNumber (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:395:16)
+    at readToken (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:293:14)
+    at Object.lookahead (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:61:43)
+    at Object.advanceLexer [as advance] (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/lexer.js:52:33)
+    at expect (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1296:11)
+    at parseName (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:92:15)
+    at parseEnumValueDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:956:14)
+    at many (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:1348:16)
+    at parseEnumValuesDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:945:50)
+    at parseEnumTypeDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:930:16)
+    at parseTypeSystemDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:669:16)
+    at parseDefinition (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:143:16)
+    at parseDocument (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:110:22)
+    at Object.parse (/bootiestrapi/jbl-strapi/plugins/graphql/node_modules/graphql/language/parser.js:38:10)
+    at Object.addPolymorphicUnionType (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1263:27)
+    at Object.generateSchema (/bootiestrapi/jbl-strapi/plugins/graphql/services/GraphQL.js:1181:58)
+    at Function.initialize (/bootiestrapi/jbl-strapi/plugins/graphql/hooks/graphql/index.js:103:62)
+    at /usr/local/lib/node_modules/strapi/lib/hooks/index.js:19:29
+    at after (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:122:39)
+    at /usr/local/lib/node_modules/strapi/node_modules/lodash/lodash.js:9997:23
+    at Strapi.once (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:133:17)
+    at Object.onceWrapper (events.js:272:13)
+    at Strapi.emit (events.js:180:13)
+    at Strapi.emit (domain.js:422:20)
+    at loadedModule.initialize.call.err (/usr/local/lib/node_modules/strapi/lib/hooks/index.js:32:12)
+    at NativeConnection.instance.connection.on (/bootiestrapi/jbl-strapi/node_modules/strapi-hook-mongoose/lib/index.js:459:11)
+    at NativeConnection.emit (events.js:180:13)
+    at NativeConnection.emit (domain.js:422:20)
+    at /bootiestrapi/jbl-strapi/node_modules/mongoose/lib/connection.js:549:13
+    at result (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:414:17)
+    at executeCallback (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/utils.js:406:9)
+    at err (/bootiestrapi/jbl-strapi/node_modules/mongodb/lib/operations/mongo_client_ops.js:286:5)
+
+
+```
 
 ## Variables d'Environment
 
