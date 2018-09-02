@@ -202,7 +202,16 @@ Something else already exists at `/bootiestrapi/jbl-strapi/api/langues/services/
 [2018-08-17T10:44:33.137Z] debug GET /settings-manager/configurations/server/staging (9 ms)
 [2018-08-17T10:44:35.110Z] debug GET /settings-manager/configurations/server/production (6 ms)
 ```
-Cette erreur apparait dans les ogs, par exemple lorsuqe l'on clique sur le menu `Users` (cf. `Content Types`, menu vertical gauche).
+Cette erreur apparait dans les logs, à cahque fois que l'on clique sur le menu `strapi-plugin-translation`. (cf. menu vertical gauche). À chaque fois que l'on clique sur ce menu, sauif une fois: la toute première fois. Je pense donc que le développeur a fait une petite erreur d'architeture, à savoir que le plugin doit être installé, et l'`API server` re-démarré, une seule et unique fois, avec chaque démarrage de l'API server, à moins de vouloir déployer une nouvelle version du plugin, avec du nouveau code source. Examiner de ce côté la mise ne place d'une market place en private instance, pour la distribution. Voir aussi la CLI pour le déploiement automatique de plugins, à prioroi, `strapi install $NOM_DE_MON_PLUGIN`
+
+En atteste le 'impression écran suivante, dans laqeulle j'arrive à provoquer l'erreur 3 fois d'affilée : 
+
+![Erreur au clic sur le menu strapi-plugin-transaltion](https://raw.githubusercontent.com/Jean-Baptiste-Lasselle/tests-strapi-pr-alex/master/doc/impr/strapi14-ac-plugin-translation-a-chaque-clic-sur-menu-strapi-plugin-translation.png)
+
+Donc le code du plugin essaie de créer le modèle "Langues", à chaque fois que l'on accède au menu. Il faut changer cette logique, et re-voir le code.
+
+
+
 
 À propos de cette même erreur , concernant le déploiement du plugin "translation" : il faut savor que c'est le "Content Manager", qui génère les APIs, (et re-démarre le serveur d'APIs, qui doit se réduire à une grappe de "RestControllers", des "EndPoints de REST API"). Hors on voit dans les logs ci-dessus, que le Content Manager tente manifestement de créer un fichier qui existe déjà: le fichier `/bootiestrapi/jbl-strapi/api/langues/controllers/Langues.js`. J'ai donc essayé de supprimer ce fichier au moment du déploiement., mais la double génération du modèle `langues` survient après le strapi start, et donc provoquée par la seule présence du plugin exemple `translation`.
 
