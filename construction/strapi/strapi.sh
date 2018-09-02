@@ -42,6 +42,15 @@ fi
 # cp -Rf $REPERTOIRE_LIVRAISON_DEV/* /bootiestrapi/$APP_NAME/plugins/translation
 
 # echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+
+echo " ++ DEBUT DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+
+ls -all /bootiestrapi/$APP_NAME/
+mkdir -p /bootiestrapi/$APP_NAME/plugins/translation
+cp -Rf $REPERTOIRE_LIVRAISON_DEV/* /bootiestrapi/$APP_NAME/plugins/translation
+
+echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
+
 echo " Contenu [/bootiestrapi/$APP_NAME/plugins/] : "
 ls -all /bootiestrapi/$APP_NAME/plugins/
 echo " ++ FIN   VERIF. DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
