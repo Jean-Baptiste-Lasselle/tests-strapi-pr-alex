@@ -43,7 +43,13 @@ fi
 
 # echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
+echo " ++ DEBUT DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
+ls -all /bootiestrapi/$APP_NAME/
+mkdir -p /bootiestrapi/$APP_NAME/plugins/translation
+cp -Rf $REPERTOIRE_LIVRAISON_DEV/* /bootiestrapi/$APP_NAME/plugins/translation
+
+echo " ++ FIN   DEPLOIEMENT PLUGIN TRANSLATION KYTES ++ "
 
 echo " Contenu [/bootiestrapi/$APP_NAME/plugins/] : "
 ls -all /bootiestrapi/$APP_NAME/plugins/
@@ -54,7 +60,7 @@ ls -all /bootiestrapi/$APP_NAME/api/
 echo " -- Juste avant le strapi start, nous constatons donc que le répertoire api est vide. "
 echo " -- Question 1 :  es-ce que le content manager génère une api langues, si je ne déploie pas le plugin translation? "
 echo " -- Question 2 :  es-ce que c'est le plugin translation, seul qui implique deux tentative successives de création de l'api langues? "
-echo " -- Ce test Montre : que la creéation du modèle \"Langues.js\" est impacté par le déploiement du plugin exemple \"translation\". C'est donc lui qui entre en coflit, lorsque j'essaie d'accéder au \"Content Type\" \"Users\", amené nativement par Strapi. "
+echo " -- Ce test Montre : que la création du modèle \"Langues.js\" est impacté par le déploiement du plugin exemple \"translation\". C'est donc lui qui entre en coflit, lorsque j'essaie d'accéder au \"Content Type\" \"Users\", amené nativement par Strapi. "
 
 cd /bootiestrapi/$APP_NAME
 strapi start &

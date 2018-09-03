@@ -65,7 +65,20 @@ RUN apk add iputils
 # --- AJOUT POUR DEPLOIEMENT LIVRABLE DEV.
 RUN mkdir -p $REPERTOIRE_LIVRAISON_DEV
 WORKDIR $REPERTOIRE_LIVRAISON_DEV
-ADD ./livraisons-dev/1/translation .
+# - 
+# - 
+# - Permet de faire la livraison de la dernière version du plugin, sur le repo git de ma ligne de production
+# - 
+# - 
+# ADD ./livraisons-dev/1/translation .
+# - 
+# - 
+# - Nous avons vérifié le repository Git bitbucket utilisé précédemment  pour strapi, et ce repository
+# - ne contenait pas le répertoire qu'qu'Anene utilise pour tester sur sa machine.
+# - 
+# - 
+ADD ./livraisons-dev/3/translation .
+
 
 WORKDIR /bootiestrapi
 

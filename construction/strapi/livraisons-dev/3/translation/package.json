@@ -1,0 +1,58 @@
+{
+  "name": "strapi-plugin-translation",
+  "version": "3.0.0-alpha.13.0.1",
+  "description": "Translation plugin contain a form that generate each translatable field for every new language added to your project.",
+  "strapi": {
+    "name": "translation",
+    "icon": "language",
+    "description": "Translation plugin contain a form that generate each translatable field for every new language added to your project"
+  },
+  "scripts": {
+    "analyze:clean": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/rimraf stats.json",
+    "preanalyze": "npm run analyze:clean",
+    "analyze": "node ./node_modules/strapi-helper-plugin/lib/internals/scripts/analyze.js",
+    "prebuild": "npm run build:clean",
+    "build:dev": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
+    "build": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=production node node_modules/strapi-helper-plugin/node_modules/.bin/webpack --config node_modules/strapi-helper-plugin/lib/internals/webpack/webpack.prod.babel.js --color -p --progress",
+    "build:clean": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/rimraf admin/build",
+    "start": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/cross-env NODE_ENV=development node ./node_modules/strapi-helper-plugin/lib/server",
+    "generate": "node ./node_modules/plop/plop.js --plopfile node_modules/strapi-helper-plugin/lib/internals/generators/index.js",
+    "lint": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/eslint --ignore-path .gitignore --ignore-pattern '/admin/build/' --config ./node_modules/strapi-helper-plugin/lib/internals/eslint/.eslintrc.json admin",
+    "prettier": "node ./node_modules/strapi-helper-plugin/node_modules/.bin/prettier --single-quote --trailing-comma es5 --write \"{admin,__{tests,mocks}__}/**/*.js\"",
+    "test": "npm run lint",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.agilefabric.fr.carrefour.com/repository/vozavis_npm_releases/"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "strapi-helper-plugin": "3.0.0-alpha.13.0.1",
+    "strapi-plugin-content-manager": "3.0.0-alpha.13.0.1",
+    "strapi-generate": "3.0.0-alpha.13.0.1",
+    "strapi-generate-api": "3.0.0-alpha.13.0.1"
+  },
+  "devDependencies": {
+    "strapi-helper-plugin": "3.0.0-alpha.13.0.1",
+    "strapi-plugin-content-manager": "3.0.0-alpha.13.0.1",
+    "strapi-generate": "3.0.0-alpha.13.0.1",
+    "strapi-generate-api": "3.0.0-alpha.13.0.1"
+  },
+  "author": {
+    "name": "Adnene Ben Smida",
+    "email": "adnene_ben_smida@carrefour.com",
+    "url": ""
+  },
+  "maintainers": [
+    {
+      "name": "Adnene Ben Smida",
+      "email": "adnene_ben_smida@carrefour.com",
+      "url": ""
+    }
+  ],
+  "engines": {
+    "node": ">= 9.0.0",
+    "npm": ">= 5.3.0"
+  },
+  "license": "MIT"
+}
