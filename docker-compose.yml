@@ -12,25 +12,44 @@ services:
       - strapi_api
     restart: always
   strapi_api:
-    container_name: jenkins.marguerite.io
-    image: jenkins:2.60.3
+    container_name: jblsbootstrapi
+    image: kytes/bootiestrapi:1.0.0
     build:
       context: ./construction/strapi
-#       args:
-#         - MARGUERITE_HOST=jenkins.marguerite.io
-#  docker run --name myjenkins -p 8080:8080 -p 50000:50000 --env JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com jenkins
-    environment:
-      - JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com jenkins
-      # à tester : passer plusieurs JAVA_OPTS au démarrage de Jenkins, en mettant la valeur de JAVA_OPTS entre guillemets  
-      # - JAVA_OPTS="-Dhudson.footerURL=http://mycompany.com jenkins  -Dune.autre.option.jenkins=savaleur    "
-      # - MARGUERITE_HOST=jenkins.marguerite.io
-    ports:
-      - 8080:8080
-      - 50000:50000
-    volumes:
-      - ./marguerite:/var/jenkins_home jenkins
-      # - /usr/src/api/instance-strapi/node_modules
-#     depends_on:
-#       - strapibdd
-    restart: always
+      args:
+        - APP_NAME_PAR_DEFAUT=jbl-strapi
+        - DATABASE_CLIENT_PAR_DEFAUT=mongo
+        - DATABASE_HOST_PAR_DEFAUT=strapibdd
+        - DATABASE_PORT_PAR_DEFAUT=27017
+        - DATABASE_NAME_PAR_DEFAUT=strapi
+        - DATABASE_USERNAME_PAR_DEFAUT=
+        - DATABASE_PASSWORD_PAR_DEFAUT=
+        # - HOST=localhost
+        # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
+        - REPERTOIRE_LIVRAISON_DEV_PAR_DEFAUT=/bootiestrapi/livraison-dev
+        # le répertorie dans lequel on invoque strapi new doit être vide, donc /bootiestrapi/livraison-dev <=> /bootiestrapi/jbl-strapi
+        # la version du framework strapi utilisée
+        - VERSION_FRAMEWORK_STRAPI=3.0.0-alpha.14
 
+    environment:
+      - APP_NAME=jbl-strapi
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=strapibdd
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      # - HOST=localhost
+      # Les variables ci-dessous sont utilisées pour les déploiements de code livré par l'équipe de dev
+      - REPERTOIRE_LIVRAISON_DEV=/bootiestrapi/livraison-dev
+      # la version du framework strapi utilisée
+      - VERSION_FRAMEWORK_STRAPI=3.0.0-alpha.14
+
+    ports:
+      - 1337:1337
+#    volumes:
+      # - ./instance-strapi:/usr/src/api/instance-strapi
+      # - /usr/src/api/instance-strapi/node_modules
+    depends_on:
+      - strapibdd
+    restart: always
