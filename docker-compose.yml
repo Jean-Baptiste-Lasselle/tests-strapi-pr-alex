@@ -53,3 +53,14 @@ services:
     depends_on:
       - strapibdd
     restart: always
+  strapibdd:
+    container_name: strapibdd
+    image: mongo:4.0.1
+#    hostname: strapibdd_1
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+    ports:
+      - 27017:27017
+    volumes:
+      - ./strapibdd:/data/db
+    restart: always
